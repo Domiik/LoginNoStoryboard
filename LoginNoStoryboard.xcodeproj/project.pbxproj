@@ -15,6 +15,8 @@
 		62F35A9D26EB247700BFB7EF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F35A9C26EB247700BFB7EF /* LoginView.swift */; };
 		62F35AA026EB5E0300BFB7EF /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F35A9F26EB5E0300BFB7EF /* MenuView.swift */; };
 		62F35AA226EB5E1500BFB7EF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F35AA126EB5E1500BFB7EF /* MenuViewController.swift */; };
+		62F35AA626EB645100BFB7EF /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F35AA526EB645100BFB7EF /* RegistrationViewController.swift */; };
+		62F35AA826EB646800BFB7EF /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F35AA726EB646800BFB7EF /* RegistrationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		62F35A9C26EB247700BFB7EF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		62F35A9F26EB5E0300BFB7EF /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		62F35AA126EB5E1500BFB7EF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		62F35AA526EB645100BFB7EF /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		62F35AA726EB646800BFB7EF /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,15 +64,14 @@
 		6222B5BF26EA1D39004BE34C /* LoginNoStoryboard */ = {
 			isa = PBXGroup;
 			children = (
+				62F35AA426EB640100BFB7EF /* Registration */,
+				62F35AA326EB637F00BFB7EF /* MenuView */,
 				62F35A9E26EB247C00BFB7EF /* View */,
 				6222B5C026EA1D39004BE34C /* AppDelegate.swift */,
 				6222B5C226EA1D39004BE34C /* SceneDelegate.swift */,
-				6222B5C426EA1D39004BE34C /* ViewController.swift */,
 				6222B5C926EA1D3B004BE34C /* Assets.xcassets */,
 				6222B5CB26EA1D3B004BE34C /* LaunchScreen.storyboard */,
 				6222B5CE26EA1D3B004BE34C /* Info.plist */,
-				62F35A9F26EB5E0300BFB7EF /* MenuView.swift */,
-				62F35AA126EB5E1500BFB7EF /* MenuViewController.swift */,
 			);
 			path = LoginNoStoryboard;
 			sourceTree = "<group>";
@@ -76,9 +79,28 @@
 		62F35A9E26EB247C00BFB7EF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6222B5C426EA1D39004BE34C /* ViewController.swift */,
 				62F35A9C26EB247700BFB7EF /* LoginView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		62F35AA326EB637F00BFB7EF /* MenuView */ = {
+			isa = PBXGroup;
+			children = (
+				62F35A9F26EB5E0300BFB7EF /* MenuView.swift */,
+				62F35AA126EB5E1500BFB7EF /* MenuViewController.swift */,
+			);
+			path = MenuView;
+			sourceTree = "<group>";
+		};
+		62F35AA426EB640100BFB7EF /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				62F35AA526EB645100BFB7EF /* RegistrationViewController.swift */,
+				62F35AA726EB646800BFB7EF /* RegistrationView.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,8 +176,10 @@
 				62F35AA226EB5E1500BFB7EF /* MenuViewController.swift in Sources */,
 				6222B5C526EA1D39004BE34C /* ViewController.swift in Sources */,
 				6222B5C126EA1D39004BE34C /* AppDelegate.swift in Sources */,
+				62F35AA626EB645100BFB7EF /* RegistrationViewController.swift in Sources */,
 				62F35A9D26EB247700BFB7EF /* LoginView.swift in Sources */,
 				6222B5C326EA1D39004BE34C /* SceneDelegate.swift in Sources */,
+				62F35AA826EB646800BFB7EF /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

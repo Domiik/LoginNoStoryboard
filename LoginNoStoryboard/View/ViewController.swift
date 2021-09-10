@@ -32,8 +32,20 @@ class ViewController: UIViewController {
     
     
     func loginPressed() {
-        let loginController = MenuViewController()
-        present(loginController, animated: true, completion: nil)
+        guard let login = loginView.loginTextField.text else {
+            return
+        }
+        guard let password = loginView.passwordTextField.text else {
+            return
+        }
+        if login == "Admin" && password == "Admin" {
+            let loginController = MenuViewController()
+            present(loginController, animated: true, completion: nil)
+        } else {
+            let registrationController = RegistrationViewController()
+            present(registrationController, animated: true, completion: nil)
+        }
+       
     }
    
     
