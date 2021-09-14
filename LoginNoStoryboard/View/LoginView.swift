@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class LoginView: UIView {
     
@@ -20,9 +21,12 @@ class LoginView: UIView {
     func setup() {
         let stackView = mainStackView()
         addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        stackView.snp.makeConstraints { maker in
+            maker.left.equalToSuperview().inset(50)
+            maker.right.equalToSuperview().inset(50)
+            maker.top.equalToSuperview().inset(50)
+            maker.bottom.equalToSuperview().inset(50)
+        }
     }
     
     let loginTextField: UITextField = {
@@ -32,8 +36,7 @@ class LoginView: UIView {
         login.attributedPlaceholder = placeholder
         login.backgroundColor = .blue
         login.textColor = .white
-        login.layer.cornerRadius = 10
-        login.anchor(width: 0, height: 50)
+        login.layer.cornerRadius = 5
         return login
     }()
     
@@ -44,8 +47,8 @@ class LoginView: UIView {
         password.attributedPlaceholder = placeholder
         password.backgroundColor = .blue
         password.textColor = .white
-        password.layer.cornerRadius = 10
-        password.anchor(width: 0, height: 50)
+        password.layer.cornerRadius = 5
+        password.isSecureTextEntry = true
         return password
     }()
     
@@ -55,7 +58,6 @@ class LoginView: UIView {
         button.setTitle("Login", for: .normal)
         button.tintColor = .white
         button.layer.cornerRadius = 10
-        button.anchor(width: 170, height: 50)
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return button
     }()

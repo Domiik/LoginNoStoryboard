@@ -8,10 +8,17 @@
 import UIKit
 
 class MenuView: UIView {
+    
+    var tableView: UITableView!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .green
+        tableView = UITableView(frame: .zero)
+        self.addSubview(tableView)
+        
+        tableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
     
     required init?(coder: NSCoder) {

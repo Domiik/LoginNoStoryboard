@@ -7,12 +7,22 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+
+class LoginViewController: UIViewController {
+    
+    enum LoginRoute: String {
+        case home
+        case resetPassword
+    }
+    var router: LoginRouter!
     
     var loginView: LoginView!
-
+    
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        router = DefaultLoginRouter(viewController: self)
         // Do any additional setup after loading the view.
         setupView()
         
@@ -30,6 +40,8 @@ class ViewController: UIViewController {
         self.view.addSubview(loginView)
     }
     
+   
+    
     
     func loginPressed() {
         guard let login = loginView.loginTextField.text else {
@@ -38,19 +50,19 @@ class ViewController: UIViewController {
         guard let password = loginView.passwordTextField.text else {
             return
         }
-        if login == "Admin" && password == "Admin" {
-            let loginController = MenuViewController()
-            present(loginController, animated: true, completion: nil)
+        if login == "A" && password == "A" {
+            
+            router.navigate(to: .resetPassword)
         } else {
-            let registrationController = RegistrationViewController()
-            present(registrationController, animated: true, completion: nil)
+            
+            router.navigate(to: .home)
         }
-       
+        
     }
-   
     
     
-
-
+    
+    
+    
 }
 
