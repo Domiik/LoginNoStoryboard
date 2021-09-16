@@ -12,6 +12,7 @@
 		6222B5C526EA1D39004BE34C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6222B5C426EA1D39004BE34C /* LoginViewController.swift */; };
 		6222B5CA26EA1D3B004BE34C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6222B5C926EA1D3B004BE34C /* Assets.xcassets */; };
 		6222B5CD26EA1D3B004BE34C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6222B5CB26EA1D3B004BE34C /* LaunchScreen.storyboard */; };
+		624E9C6C26F205CA00E92F11 /* UIView+Extesion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E9C6B26F205CA00E92F11 /* UIView+Extesion.swift */; };
 		62577CC026F097D20024C995 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62577CBF26F097D20024C995 /* LoginRouter.swift */; };
 		62F35A9D26EB247700BFB7EF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F35A9C26EB247700BFB7EF /* LoginView.swift */; };
 		62F35AA026EB5E0300BFB7EF /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F35A9F26EB5E0300BFB7EF /* MenuView.swift */; };
@@ -29,6 +30,7 @@
 		6222B5C926EA1D3B004BE34C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6222B5CC26EA1D3B004BE34C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6222B5CE26EA1D3B004BE34C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		624E9C6B26F205CA00E92F11 /* UIView+Extesion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extesion.swift"; sourceTree = "<group>"; };
 		62577CBF26F097D20024C995 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		62F35A9C26EB247700BFB7EF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		62F35A9F26EB5E0300BFB7EF /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 		6222B5BF26EA1D39004BE34C /* LoginNoStoryboard */ = {
 			isa = PBXGroup;
 			children = (
+				624E9C6A26F205A300E92F11 /* Resurse */,
 				62577CBE26F097AF0024C995 /* Router */,
 				62F35AA426EB640100BFB7EF /* Registration */,
 				62F35AA326EB637F00BFB7EF /* MenuView */,
@@ -101,6 +104,14 @@
 				6222B5CE26EA1D3B004BE34C /* Info.plist */,
 			);
 			path = LoginNoStoryboard;
+			sourceTree = "<group>";
+		};
+		624E9C6A26F205A300E92F11 /* Resurse */ = {
+			isa = PBXGroup;
+			children = (
+				624E9C6B26F205CA00E92F11 /* UIView+Extesion.swift */,
+			);
+			path = Resurse;
 			sourceTree = "<group>";
 		};
 		62577CBE26F097AF0024C995 /* Router */ = {
@@ -254,6 +265,7 @@
 				62F35AA026EB5E0300BFB7EF /* MenuView.swift in Sources */,
 				62F35AA226EB5E1500BFB7EF /* MenuViewController.swift in Sources */,
 				6222B5C526EA1D39004BE34C /* LoginViewController.swift in Sources */,
+				624E9C6C26F205CA00E92F11 /* UIView+Extesion.swift in Sources */,
 				6222B5C126EA1D39004BE34C /* AppDelegate.swift in Sources */,
 				62577CC026F097D20024C995 /* LoginRouter.swift in Sources */,
 				62F35AA626EB645100BFB7EF /* RegistrationViewController.swift in Sources */,

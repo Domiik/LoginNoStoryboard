@@ -39,6 +39,5 @@ class DefaultLoginRouter: LoginRouter {
         }
     }
     
-   
 }
 
