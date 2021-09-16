@@ -18,14 +18,19 @@ class LoginViewController: UIViewController {
     
     var loginView: LoginView!
     
-   
+    override func loadView() {
+        super.loadView()
+        router = DefaultLoginRouter(viewController: self)
+        let mainView = LoginView(frame: self.view.frame)
+        self.loginView = mainView
+        self.loginView.loginAction = loginPressed
+        self.view.addSubview(loginView)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        router = DefaultLoginRouter(viewController: self)
-        // Do any additional setup after loading the view.
-        setupView()
         
+        // Do any additional setup after loading the view
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,16 +38,7 @@ class LoginViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
-    func setupView(){
-        let mainView = LoginView(frame: self.view.frame)
-        self.loginView = mainView
-        self.loginView.loginAction = loginPressed
-        self.view.addSubview(loginView)
-    }
-    
-   
-    
-    
+
     func loginPressed() {
         guard let login = loginView.loginTextField.text else {
             return
