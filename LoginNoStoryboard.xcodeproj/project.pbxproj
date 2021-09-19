@@ -14,6 +14,8 @@
 		6222B5CD26EA1D3B004BE34C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6222B5CB26EA1D3B004BE34C /* LaunchScreen.storyboard */; };
 		624E9C6C26F205CA00E92F11 /* UIView+Extesion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E9C6B26F205CA00E92F11 /* UIView+Extesion.swift */; };
 		62577CC026F097D20024C995 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62577CBF26F097D20024C995 /* LoginRouter.swift */; };
+		629FFAF826F62900002ADFBD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629FFAF726F62900002ADFBD /* User.swift */; };
+		629FFAFB26F62931002ADFBD /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629FFAFA26F62931002ADFBD /* UserViewModel.swift */; };
 		62F35A9D26EB247700BFB7EF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F35A9C26EB247700BFB7EF /* LoginView.swift */; };
 		62F35AA026EB5E0300BFB7EF /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F35A9F26EB5E0300BFB7EF /* MenuView.swift */; };
 		62F35AA226EB5E1500BFB7EF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F35AA126EB5E1500BFB7EF /* MenuViewController.swift */; };
@@ -32,6 +34,8 @@
 		6222B5CE26EA1D3B004BE34C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		624E9C6B26F205CA00E92F11 /* UIView+Extesion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extesion.swift"; sourceTree = "<group>"; };
 		62577CBF26F097D20024C995 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		629FFAF726F62900002ADFBD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		629FFAFA26F62931002ADFBD /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		62F35A9C26EB247700BFB7EF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		62F35A9F26EB5E0300BFB7EF /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		62F35AA126EB5E1500BFB7EF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -92,10 +96,10 @@
 		6222B5BF26EA1D39004BE34C /* LoginNoStoryboard */ = {
 			isa = PBXGroup;
 			children = (
+				629FFAF926F6291D002ADFBD /* ViewModel */,
+				629FFAF626F628F4002ADFBD /* Model */,
 				624E9C6A26F205A300E92F11 /* Resurse */,
 				62577CBE26F097AF0024C995 /* Router */,
-				62F35AA426EB640100BFB7EF /* Registration */,
-				62F35AA326EB637F00BFB7EF /* MenuView */,
 				62F35A9E26EB247C00BFB7EF /* View */,
 				6222B5C026EA1D39004BE34C /* AppDelegate.swift */,
 				6222B5C226EA1D39004BE34C /* SceneDelegate.swift */,
@@ -122,22 +126,48 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
-		62F35A9E26EB247C00BFB7EF /* View */ = {
+		629FFAF626F628F4002ADFBD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				629FFAF726F62900002ADFBD /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		629FFAF926F6291D002ADFBD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				629FFAFA26F62931002ADFBD /* UserViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		629FFAFC26F62A06002ADFBD /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				6222B5C426EA1D39004BE34C /* LoginViewController.swift */,
 				62F35A9C26EB247700BFB7EF /* LoginView.swift */,
 			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		62F35A9E26EB247C00BFB7EF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				629FFAFC26F62A06002ADFBD /* Login */,
+				62F35AA426EB640100BFB7EF /* Registration */,
+				62F35AA326EB637F00BFB7EF /* Menu */,
+			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		62F35AA326EB637F00BFB7EF /* MenuView */ = {
+		62F35AA326EB637F00BFB7EF /* Menu */ = {
 			isa = PBXGroup;
 			children = (
 				62F35A9F26EB5E0300BFB7EF /* MenuView.swift */,
 				62F35AA126EB5E1500BFB7EF /* MenuViewController.swift */,
 			);
-			path = MenuView;
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		62F35AA426EB640100BFB7EF /* Registration */ = {
@@ -263,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62F35AA026EB5E0300BFB7EF /* MenuView.swift in Sources */,
+				629FFAFB26F62931002ADFBD /* UserViewModel.swift in Sources */,
 				62F35AA226EB5E1500BFB7EF /* MenuViewController.swift in Sources */,
 				6222B5C526EA1D39004BE34C /* LoginViewController.swift in Sources */,
 				624E9C6C26F205CA00E92F11 /* UIView+Extesion.swift in Sources */,
@@ -272,6 +303,7 @@
 				62F35A9D26EB247700BFB7EF /* LoginView.swift in Sources */,
 				6222B5C326EA1D39004BE34C /* SceneDelegate.swift in Sources */,
 				62F35AA826EB646800BFB7EF /* RegistrationView.swift in Sources */,
+				629FFAF826F62900002ADFBD /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

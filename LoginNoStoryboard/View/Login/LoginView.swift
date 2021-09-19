@@ -23,8 +23,8 @@ class LoginView: UIView {
         stackView.snp.makeConstraints { maker in
             maker.left.equalToSuperview().inset(50)
             maker.right.equalToSuperview().inset(50)
-            maker.top.equalToSuperview().inset(50)
-            maker.bottom.equalToSuperview().inset(50)
+            maker.top.equalToSuperview().inset(200)
+            maker.bottom.equalToSuperview().inset(200)
         }
     }
     

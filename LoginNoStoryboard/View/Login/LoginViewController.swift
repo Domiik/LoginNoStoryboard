@@ -11,12 +11,14 @@ import UIKit
 class LoginViewController: UIViewController {
     
     enum LoginRoute: String {
-        case home
+        case menu
         case resetPassword
+        case loginView
     }
     var router: LoginRouter!
     
     var loginView: LoginView!
+    var userViewModel: UserViewModel!
     
     override func loadView() {
         super.loadView()
@@ -27,10 +29,11 @@ class LoginViewController: UIViewController {
         self.view.addSubview(loginView)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        if userViewModel.currentUser(){
+//            router.navigate(to: .menu)
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,12 +49,12 @@ class LoginViewController: UIViewController {
         guard let password = loginView.passwordTextField.text else {
             return
         }
-        if login == "A" && password == "A" {
-            
-            router.navigate(to: .resetPassword)
+        if login == "Admin" && password == "Admin" {
+            userViewModel.token = "yes"
+            print(userViewModel.token)
+            router.navigate(to: .menu)
         } else {
-            
-            router.navigate(to: .home)
+            router.navigate(to: .resetPassword)
         }
         
     }
