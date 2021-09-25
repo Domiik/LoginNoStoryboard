@@ -13,27 +13,20 @@ class LoginViewController: UIViewController {
     enum LoginRoute: String {
         case menu
         case resetPassword
-        case loginView
     }
-    var router: LoginRouter!
     
-    var loginView: LoginView!
-    var userViewModel: UserViewModel!
+    lazy var router = DefaultLoginRouter(viewController: self)
+    
+    lazy var loginView = LoginView()
+    lazy var userViewModel = UserViewModel(user: nil)
     
     override func loadView() {
-        super.loadView()
-        router = DefaultLoginRouter(viewController: self)
-        let mainView = LoginView(frame: self.view.frame)
-        self.loginView = mainView
         self.loginView.loginAction = loginPressed
-        self.view.addSubview(loginView)
+        self.view = loginView
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        if userViewModel.currentUser(){
-//            router.navigate(to: .menu)
-//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,19 +42,13 @@ class LoginViewController: UIViewController {
         guard let password = loginView.passwordTextField.text else {
             return
         }
-        if login == "Admin" && password == "Admin" {
-            userViewModel.token = "yes"
-            print(userViewModel.token)
+        if userViewModel.currentUser(login: login, password: password) {
             router.navigate(to: .menu)
         } else {
             router.navigate(to: .resetPassword)
         }
         
     }
-    
-    
-    
-    
     
 }
 

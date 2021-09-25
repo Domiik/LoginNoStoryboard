@@ -10,18 +10,16 @@ import UIKit
 class MenuViewController: UIViewController {
     
     var menuView: MenuView!
-    var router: LoginRouter!
-    var user: UserViewModel!
+    var router: AppRouter!
+    var userViewModel: UserViewModel!
     
     enum LoginRoute: String {
-        case home
-        case resetPassword
         case loginView
     }
    
     override func loadView() {
         super.loadView()
-        router = DefaultLoginRouter(viewController: self)
+        router = DefaultAppRouter(viewController: self)
         let mainView = MenuView(frame: self.view.frame)
         self.menuView = mainView
         self.menuView.logoutAction = logoutPressed
@@ -38,8 +36,7 @@ class MenuViewController: UIViewController {
     }
     
     func logoutPressed() {
-        user.token = ""
-        print(user.token)
+        UserDefaults.standard.set(false, forKey: "Login")
         router.navigate(to: .loginView)
     }
     
