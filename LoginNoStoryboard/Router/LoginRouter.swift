@@ -7,18 +7,10 @@
 
 import UIKit
 
-protocol LoginRouter {
-    typealias Route = LoginViewController.LoginRoute
-    
-    var viewController: LoginViewController! { get }
-    init(viewController: LoginViewController)
-    
-    func navigate(to route: Route)
-}
 
-class DefaultLoginRouter: LoginRouter {
+class DefaultLoginRouter {
+    typealias Route = LoginViewController.LoginRoute
     weak var viewController: LoginViewController!
-    
     
     required init(viewController: LoginViewController) {
         self.viewController = viewController 
@@ -36,7 +28,6 @@ class DefaultLoginRouter: LoginRouter {
             let registrationController = RegistrationViewController()
             viewController.navigationController?.pushViewController(registrationController, animated: true)
         }
-        
     }
 }
 

@@ -12,6 +12,7 @@ class MenuViewController: UIViewController {
     var menuView: MenuView!
     var router: AppRouter!
     var userViewModel: UserViewModel!
+    var user: User?
     
     enum LoginRoute: String {
         case loginView
@@ -19,7 +20,7 @@ class MenuViewController: UIViewController {
    
     override func loadView() {
         super.loadView()
-        router = DefaultAppRouter(viewController: self)
+        router = AppRouter(viewController: self)
         let mainView = MenuView(frame: self.view.frame)
         self.menuView = mainView
         self.menuView.logoutAction = logoutPressed
@@ -36,7 +37,7 @@ class MenuViewController: UIViewController {
     }
     
     func logoutPressed() {
-        UserDefaults.standard.set(false, forKey: "Login")
+        UserDefaults.standard.removeObject(forKey: "Login")
         router.navigate(to: .loginView)
     }
     

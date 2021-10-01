@@ -20,21 +20,18 @@ class RegistrationView: UIView {
     func setup() {
         addSubview(stackView)
         stackView.snp.makeConstraints { maker in
-            maker.left.equalToSuperview().inset(50)
-            maker.right.equalToSuperview().inset(50)
-            maker.top.equalToSuperview().inset(200)
-            maker.bottom.equalToSuperview().inset(200)
+            maker.edges.equalToSuperview().inset(50)
         }
     }
     
-    let registrationText: UILabel = {
+    lazy var registrationText: UILabel = {
         let text = UILabel()
         text.text = "Registration"
         text.textColor = .black
         return text
     }()
     
-    let loginTextField: UITextField = {
+    lazy var loginTextField: UITextField = {
         let login = UITextField()
         var placeholder = NSMutableAttributedString()
         placeholder = NSMutableAttributedString(attributedString: NSAttributedString(string: "Login", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), .foregroundColor: UIColor.gray]))
@@ -45,7 +42,7 @@ class RegistrationView: UIView {
         return login
     }()
     
-    let passwordTextField: UITextField = {
+    lazy var passwordTextField: UITextField = {
         let password = UITextField()
         var placeholder = NSMutableAttributedString()
         placeholder = NSMutableAttributedString(attributedString: NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), .foregroundColor: UIColor.gray]))
@@ -57,7 +54,7 @@ class RegistrationView: UIView {
         return password
     }()
     
-    let сonfirmedPasswordTextField: UITextField = {
+    lazy var сonfirmedPasswordTextField: UITextField = {
         let password = UITextField()
         var placeholder = NSMutableAttributedString()
         placeholder = NSMutableAttributedString(attributedString: NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), .foregroundColor: UIColor.gray]))
@@ -69,7 +66,7 @@ class RegistrationView: UIView {
         return password
     }()
     
-    let buttonRegister: UIButton = {
+    lazy var buttonRegister: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .red
         button.setTitle("Login", for: .normal)

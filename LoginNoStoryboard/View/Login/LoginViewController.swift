@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
     lazy var router = DefaultLoginRouter(viewController: self)
     
     lazy var loginView = LoginView()
-    lazy var userViewModel = UserViewModel(user: nil)
+    lazy var userViewModel = UserViewModel()
     
     override func loadView() {
         self.loginView.loginAction = loginPressed

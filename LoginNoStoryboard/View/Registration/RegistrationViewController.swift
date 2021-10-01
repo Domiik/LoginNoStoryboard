@@ -25,7 +25,8 @@ class RegistrationViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = false
+        //navigationController?.navigationBar.isHidden = false
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
 }

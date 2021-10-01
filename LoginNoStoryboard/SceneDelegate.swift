@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         case login
         case menu
     }
-    lazy var router = DefaultRouter(viewController: self)
+    lazy var router = DefaultRouter(viewController: window!)
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -24,12 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         window.makeKeyAndVisible()
         self.window = window
-        if UserDefaults.standard.bool(forKey: "Login"){
-            router.navigate(to: .menu)
-        } else {
-            router.navigate(to: .login)
-        }
-        
+        router.start()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

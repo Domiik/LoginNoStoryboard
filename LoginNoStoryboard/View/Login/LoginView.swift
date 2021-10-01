@@ -28,14 +28,14 @@ class LoginView: UIView {
         }
     }
     
-    let loginText: UILabel = {
+    lazy var loginText: UILabel = {
         let text = UILabel()
         text.text = "Login"
         text.textColor = .black
         return text
     }()
     
-    let loginTextField: UITextField = {
+    lazy var loginTextField: UITextField = {
         let login = UITextField()
         var placeholder = NSMutableAttributedString()
         placeholder = NSMutableAttributedString(attributedString: NSAttributedString(string: "Login", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), .foregroundColor: UIColor.gray]))
@@ -46,7 +46,7 @@ class LoginView: UIView {
         return login
     }()
     
-    let passwordTextField: UITextField = {
+    lazy var passwordTextField: UITextField = {
         let password = UITextField()
         var placeholder = NSMutableAttributedString()
         placeholder = NSMutableAttributedString(attributedString: NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), .foregroundColor: UIColor.gray]))
@@ -58,7 +58,7 @@ class LoginView: UIView {
         return password
     }()
     
-    let buttonEnter: UIButton = {
+    lazy var buttonEnter: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .red
         button.setTitle("Login", for: .normal)
