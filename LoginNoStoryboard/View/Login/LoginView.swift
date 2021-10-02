@@ -28,6 +28,13 @@ class LoginView: UIView {
         }
     }
     
+    let loginText: UILabel = {
+        let text = UILabel()
+        text.text = "Login"
+        text.textColor = .black
+        return text
+    }()
+    
     let loginTextField: UITextField = {
         let login = UITextField()
         var placeholder = NSMutableAttributedString()
@@ -63,9 +70,10 @@ class LoginView: UIView {
     
     
     lazy var stackView: UIStackView = {
-         let stack = UIStackView(arrangedSubviews: [loginTextField,
-                                                       passwordTextField,
-                                                       buttonEnter])
+        let stack = UIStackView(arrangedSubviews: [loginText,
+                                                   loginTextField,
+                                                   passwordTextField,
+                                                   buttonEnter])
         stack.axis = .vertical
         stack.distribution = .fillEqually
         stack.spacing = 10

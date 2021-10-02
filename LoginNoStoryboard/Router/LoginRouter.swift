@@ -10,23 +10,23 @@ import UIKit
 protocol LoginRouter {
     typealias Route = LoginViewController.LoginRoute
     
-    var viewController: UIViewController! { get }
-    init(viewController: UIViewController)
+    var viewController: LoginViewController! { get }
+    init(viewController: LoginViewController)
     
     func navigate(to route: Route)
 }
 
 class DefaultLoginRouter: LoginRouter {
-    weak var viewController: UIViewController!
-
+    weak var viewController: LoginViewController!
     
-    required init(viewController: UIViewController) {
-        self.viewController = viewController
+    
+    required init(viewController: LoginViewController) {
+        self.viewController = viewController 
     }
     
     func navigate(to route: Route) {
         guard let route = LoginViewController.LoginRoute(rawValue: route.rawValue)  else {
-        return
+            return
         }
         switch route {
         case .menu:
@@ -34,13 +34,9 @@ class DefaultLoginRouter: LoginRouter {
             viewController.navigationController?.pushViewController(menuController, animated: true)
         case .resetPassword:
             let registrationController = RegistrationViewController()
-            registrationController.modalPresentationStyle = .fullScreen
-            viewController.present(registrationController, animated: true, completion: nil)
-        case .loginView:
-            let loginController = LoginViewController()
-            viewController.navigationController?.pushViewController(loginController, animated: true)
+            viewController.navigationController?.pushViewController(registrationController, animated: true)
         }
+        
     }
-    
 }
 

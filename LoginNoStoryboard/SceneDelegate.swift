@@ -10,7 +10,11 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    enum Router: String {
+        case login
+        case menu
+    }
+    lazy var router = DefaultRouter(viewController: self)
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -19,9 +23,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         window.makeKeyAndVisible()
-        window.rootViewController = UINavigationController(rootViewController: LoginViewController())
-        
         self.window = window
+        if UserDefaults.standard.bool(forKey: "Login"){
+            router.navigate(to: .menu)
+        } else {
+            router.navigate(to: .login)
+        }
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
