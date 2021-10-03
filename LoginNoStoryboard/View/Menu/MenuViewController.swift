@@ -37,7 +37,8 @@ class MenuViewController: UIViewController {
     }
     
     func logoutPressed() {
-        UserDefaults.standard.removeObject(forKey: "Login")
+        UserDefaultSetting.user = nil
+        //UserDefaults.standard.removeObject(forKey: "Login")
         router.navigate(to: .loginView)
     }
     
