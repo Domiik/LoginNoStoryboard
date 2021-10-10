@@ -20,7 +20,10 @@ class RegistrationView: UIView {
     func setup() {
         addSubview(stackView)
         stackView.snp.makeConstraints { maker in
-            maker.edges.equalToSuperview().inset(50)
+            maker.left.equalToSuperview().inset(50)
+            maker.right.equalToSuperview().inset(50)
+            maker.top.equalToSuperview().inset(200)
+            maker.bottom.equalToSuperview().inset(200)
         }
     }
     
@@ -54,18 +57,6 @@ class RegistrationView: UIView {
         return password
     }()
     
-    lazy var сonfirmedPasswordTextField: UITextField = {
-        let password = UITextField()
-        var placeholder = NSMutableAttributedString()
-        placeholder = NSMutableAttributedString(attributedString: NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), .foregroundColor: UIColor.gray]))
-        password.attributedPlaceholder = placeholder
-        password.backgroundColor = .blue
-        password.textColor = .white
-        password.layer.cornerRadius = 5
-        password.isSecureTextEntry = true
-        return password
-    }()
-    
     lazy var buttonRegister: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .red
@@ -81,7 +72,6 @@ class RegistrationView: UIView {
          let stack = UIStackView(arrangedSubviews: [registrationText,
                                                     loginTextField,
                                                     passwordTextField,
-                                                    сonfirmedPasswordTextField,
                                                     buttonRegister])
         stack.axis = .vertical
         stack.distribution = .fillEqually

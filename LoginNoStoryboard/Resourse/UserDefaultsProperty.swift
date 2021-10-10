@@ -24,6 +24,7 @@ struct Defaults<T> {
             storage.value(forKey: key) as? T
         }
         set{
+            print("save")
             storage.setValue(newValue, forKey: key)
         }
     }
