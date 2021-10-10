@@ -8,15 +8,14 @@
 import UIKit
 
 class DefaultRouter {
-    typealias Route = SceneDelegate.Router
-    weak var sceneViewController: UIWindow!
+    unowned var window: UIWindow
     
-    required init(viewController: UIWindow) {
-        self.sceneViewController = viewController.window
+    required init(window: UIWindow) {
+        self.window = window
     }
     
     func start() {
-        if (UserDefaults.standard.value(forKey: "Login") != nil){
+        if (UserDefaultSetting.user != nil){
             navigate(to: .menu)
         } else {
             navigate(to: .login)
@@ -30,12 +29,17 @@ class DefaultRouter {
         switch route {
         case .login:
             let loginController = LoginViewController()
-            //здесь ошибка функционала
-            sceneViewController.rootViewController = UINavigationController(rootViewController: loginController)
-            //sceneViewController.rootViewController = UINavigationController(rootViewController: loginController)
+            window.rootViewController = UINavigationController(rootViewController: loginController)
         case .menu:
             let menuController = MenuViewController()
-            sceneViewController.window?.rootViewController = UINavigationController(rootViewController: menuController)
+            window.window?.rootViewController = UINavigationController(rootViewController: menuController)
         }
+    }
+}
+
+extension DefaultRouter {
+    enum Route: String {
+        case login
+        case menu
     }
 }

@@ -10,15 +10,11 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    enum LoginRoute: String {
-        case menu
-        case resetPassword
-    }
-    
     lazy var router = DefaultLoginRouter(viewController: self)
     
     lazy var loginView = LoginView()
     lazy var userViewModel = UserViewModel()
+    lazy var loginViewModel = LoginViewModel()
     
     override func loadView() {
         self.loginView.loginAction = loginPressed
@@ -34,7 +30,7 @@ class LoginViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
-
+    
     func loginPressed() {
         guard let login = loginView.loginTextField.text else {
             return
@@ -42,11 +38,17 @@ class LoginViewController: UIViewController {
         guard let password = loginView.passwordTextField.text else {
             return
         }
-        if userViewModel.currentUser(login: login, password: password) {
-            router.navigate(to: .menu)
-        } else {
-            router.navigate(to: .resetPassword)
-        }
+//        if userViewModel.currentUser(login: login, password: password) {
+//            router.navigate(to: .menu)
+//        } else {
+//            router.navigate(to: .resetPassword)
+//        }
+        
+        self.loginViewModel.signUser(email: login, password: password, completion: {
+            self.router.navigate(to: .menu)
+        }, failure: { (error) in
+            self.router.navigate(to: .resetPassword)
+        })
         
     }
     

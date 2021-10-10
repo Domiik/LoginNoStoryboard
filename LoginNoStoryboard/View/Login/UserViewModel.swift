@@ -20,7 +20,6 @@ class UserViewModel {
     
     var user: User?
     
-   
     func currentUser(login: String, password: String) -> Bool{
         let current = LoginViewAction.submit(login: login, password: password)
         switch current {

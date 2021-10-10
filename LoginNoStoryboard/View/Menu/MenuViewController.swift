@@ -14,9 +14,6 @@ class MenuViewController: UIViewController {
     var userViewModel: UserViewModel!
     var user: User?
     
-    enum LoginRoute: String {
-        case loginView
-    }
    
     override func loadView() {
         super.loadView()

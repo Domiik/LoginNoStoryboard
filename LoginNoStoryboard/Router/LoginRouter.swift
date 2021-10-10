@@ -9,17 +9,14 @@ import UIKit
 
 
 class DefaultLoginRouter {
-    typealias Route = LoginViewController.LoginRoute
+    
     weak var viewController: LoginViewController!
     
     required init(viewController: LoginViewController) {
         self.viewController = viewController 
     }
     
-    func navigate(to route: Route) {
-        guard let route = LoginViewController.LoginRoute(rawValue: route.rawValue)  else {
-            return
-        }
+    func navigate(to route: LoginRoute) {
         switch route {
         case .menu:
             let menuController = MenuViewController()
@@ -31,3 +28,9 @@ class DefaultLoginRouter {
     }
 }
 
+extension DefaultLoginRouter {
+    enum LoginRoute: String {
+        case menu
+        case resetPassword
+    }
+}
