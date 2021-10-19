@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 
+
 protocol LoginViewModelProtocol: class {
     func signUser() -> Bool
 }

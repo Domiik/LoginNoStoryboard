@@ -8,7 +8,9 @@
 import UIKit
 
 
+
 class LoginRouter {
+    
     
     weak var viewController: LoginViewController!
     
@@ -28,7 +30,9 @@ class LoginRouter {
     }
 }
 
+
 extension LoginRouter {
+    
     enum LoginRoute: String {
         case menu
         case resetPassword

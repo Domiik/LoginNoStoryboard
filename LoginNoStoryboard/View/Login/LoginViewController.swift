@@ -10,6 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+
     lazy var router = LoginRouter(viewController: self)
     
     private lazy var loginView = LoginView()
@@ -41,6 +42,7 @@ class LoginViewController: UIViewController {
         guard let password = self.loginView.passwordTextField.text else {
             return
         }
+
         if data {
             self.loginViewModel.signUser(email: login, password: password, completion: { [weak self] in
                 self?.router.navigate(to: .menu)
@@ -54,6 +56,7 @@ class LoginViewController: UIViewController {
                 router.navigate(to: .resetPassword)
             }
         }
+
     }
     
     func registrationTransitionButton() {
