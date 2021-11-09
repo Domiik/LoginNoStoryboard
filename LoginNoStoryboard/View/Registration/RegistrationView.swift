@@ -27,14 +27,14 @@ class RegistrationView: UIView {
         }
     }
     
-    let registrationText: UILabel = {
+    lazy var registrationText: UILabel = {
         let text = UILabel()
         text.text = "Registration"
         text.textColor = .black
         return text
     }()
     
-    let loginTextField: UITextField = {
+    lazy var loginTextField: UITextField = {
         let login = UITextField()
         var placeholder = NSMutableAttributedString()
         placeholder = NSMutableAttributedString(attributedString: NSAttributedString(string: "Login", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), .foregroundColor: UIColor.gray]))
@@ -45,7 +45,7 @@ class RegistrationView: UIView {
         return login
     }()
     
-    let passwordTextField: UITextField = {
+    lazy var passwordTextField: UITextField = {
         let password = UITextField()
         var placeholder = NSMutableAttributedString()
         placeholder = NSMutableAttributedString(attributedString: NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), .foregroundColor: UIColor.gray]))
@@ -57,19 +57,7 @@ class RegistrationView: UIView {
         return password
     }()
     
-    let сonfirmedPasswordTextField: UITextField = {
-        let password = UITextField()
-        var placeholder = NSMutableAttributedString()
-        placeholder = NSMutableAttributedString(attributedString: NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), .foregroundColor: UIColor.gray]))
-        password.attributedPlaceholder = placeholder
-        password.backgroundColor = .blue
-        password.textColor = .white
-        password.layer.cornerRadius = 5
-        password.isSecureTextEntry = true
-        return password
-    }()
-    
-    let buttonRegister: UIButton = {
+    lazy var buttonRegister: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .red
         button.setTitle("Login", for: .normal)
@@ -84,7 +72,6 @@ class RegistrationView: UIView {
          let stack = UIStackView(arrangedSubviews: [registrationText,
                                                     loginTextField,
                                                     passwordTextField,
-                                                    сonfirmedPasswordTextField,
                                                     buttonRegister])
         stack.axis = .vertical
         stack.distribution = .fillEqually

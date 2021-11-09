@@ -11,28 +11,30 @@ enum LoginViewAction {
     case submit(login: String, password: String)
 }
 
+struct UserDefaultSetting {
+    @Defaults(key: "Login", defaultValue: User())
+    static var user
+}
+
 class UserViewModel {
     
-    var user: User?
-   
-    public init(user: User?) {
-        self.user = user
-    }
-    
-    public var token: String? {
-        get { return user?.token }
-        set { guard let newValue = user?.token else { return } }
-    }
-    
-    func currentUser(login: String, password: String) -> Bool{
+    private var user: User?
+
+ 
+}
+
+extension UserViewModel: LoginViewModelProtocol {
+    func signUser(login: String, password: String, completion: @escaping ((Bool) -> Void)) {
         let current = LoginViewAction.submit(login: login, password: password)
         switch current {
         case .submit(login: "Admin", password: "Admin"):
-            UserDefaults.standard.set(true, forKey: "Login")
-            return true
+            UserDefaultSetting.user = user
+            completion(true)
         default:
-            return false
+            completion(false)
         }
     }
+    
+    
     
 }

@@ -7,27 +7,18 @@
 
 import UIKit
 
-protocol LoginRouter {
-    typealias Route = LoginViewController.LoginRoute
-    
-    var viewController: LoginViewController! { get }
-    init(viewController: LoginViewController)
-    
-    func navigate(to route: Route)
-}
 
-class DefaultLoginRouter: LoginRouter {
-    weak var viewController: LoginViewController!
+
+class LoginRouter {
     
+    
+    weak var viewController: LoginViewController!
     
     required init(viewController: LoginViewController) {
         self.viewController = viewController 
     }
     
-    func navigate(to route: Route) {
-        guard let route = LoginViewController.LoginRoute(rawValue: route.rawValue)  else {
-            return
-        }
+    func navigate(to route: LoginRoute) {
         switch route {
         case .menu:
             let menuController = MenuViewController()
@@ -36,7 +27,14 @@ class DefaultLoginRouter: LoginRouter {
             let registrationController = RegistrationViewController()
             viewController.navigationController?.pushViewController(registrationController, animated: true)
         }
-        
     }
 }
 
+
+extension LoginRouter {
+    
+    enum LoginRoute: String {
+        case menu
+        case resetPassword
+    }
+}

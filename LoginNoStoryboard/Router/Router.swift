@@ -7,34 +7,39 @@
 
 import UIKit
 
-protocol Router {
-    typealias Route = SceneDelegate.Router
+class DefaultRouter {
+    unowned var window: UIWindow
     
-    var viewController: SceneDelegate! { get }
-    init(viewController: SceneDelegate)
+    required init(window: UIWindow) {
+        self.window = window
+    }
     
-    func navigate(to route: Route)
-}
-
-class DefaultRouter: Router {
-    weak var viewController: SceneDelegate!
-
-    required init(viewController: SceneDelegate) {
-        self.viewController = viewController
+    func start() {
+        if (UserDefaultSetting.user != nil){
+            navigate(to: .menu)
+        } else {
+            navigate(to: .login)
+        }
     }
     
     func navigate(to route: Route) {
         guard let route = SceneDelegate.Router(rawValue: route.rawValue)  else {
-        return
+            return
         }
         switch route {
         case .login:
             let loginController = LoginViewController()
-            viewController.window?.rootViewController = UINavigationController(rootViewController: loginController)
+            window.rootViewController = UINavigationController(rootViewController: loginController)
         case .menu:
             let menuController = MenuViewController()
-            viewController.window?.rootViewController = UINavigationController(rootViewController: menuController)
+            window.window?.rootViewController = UINavigationController(rootViewController: menuController)
         }
     }
-    
+}
+
+extension DefaultRouter {
+    enum Route: String {
+        case login
+        case menu
+    }
 }

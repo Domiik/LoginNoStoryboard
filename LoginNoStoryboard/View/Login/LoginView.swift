@@ -11,6 +11,8 @@ import SnapKit
 class LoginView: UIView {
     
     var loginAction: (() -> Void)?
+    var registrationAction: (() -> Void)?
+    var showAlertWithData: (() -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,6 +22,18 @@ class LoginView: UIView {
     
     func setup() {
         addSubview(stackView)
+        addSubview(buttonChange)
+        addConstrain()
+    }
+    
+    func addConstrain() {
+        buttonChange.snp.makeConstraints { maker in
+            maker.right.equalToSuperview().inset(20)
+            maker.top.equalToSuperview().inset(40)
+            maker.height.equalTo(50)
+            maker.width.equalTo(50)
+        }
+        
         stackView.snp.makeConstraints { maker in
             maker.left.equalToSuperview().inset(50)
             maker.right.equalToSuperview().inset(50)
@@ -28,14 +42,14 @@ class LoginView: UIView {
         }
     }
     
-    let loginText: UILabel = {
+    lazy var loginText: UILabel = {
         let text = UILabel()
         text.text = "Login"
         text.textColor = .black
         return text
     }()
     
-    let loginTextField: UITextField = {
+    lazy var loginTextField: UITextField = {
         let login = UITextField()
         var placeholder = NSMutableAttributedString()
         placeholder = NSMutableAttributedString(attributedString: NSAttributedString(string: "Login", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), .foregroundColor: UIColor.gray]))
@@ -46,7 +60,7 @@ class LoginView: UIView {
         return login
     }()
     
-    let passwordTextField: UITextField = {
+    lazy var passwordTextField: UITextField = {
         let password = UITextField()
         var placeholder = NSMutableAttributedString()
         placeholder = NSMutableAttributedString(attributedString: NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), .foregroundColor: UIColor.gray]))
@@ -58,7 +72,7 @@ class LoginView: UIView {
         return password
     }()
     
-    let buttonEnter: UIButton = {
+    lazy var buttonEnter: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .red
         button.setTitle("Login", for: .normal)
@@ -68,12 +82,31 @@ class LoginView: UIView {
         return button
     }()
     
+    lazy var buttonRegistration: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .clear
+        button.setTitle("Registration", for: .normal)
+        button.tintColor = .black
+        button.addTarget(self, action: #selector(handleRegistration), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var buttonChange: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .clear
+        button.setTitle("", for: .normal)
+        button.tintColor = .black
+        button.addTarget(self, action: #selector(handleAlertWithData), for: .touchUpInside)
+        return button
+    }()
+    
     
     lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [loginText,
                                                    loginTextField,
                                                    passwordTextField,
-                                                   buttonEnter])
+                                                   buttonEnter,
+                                                   buttonRegistration])
         stack.axis = .vertical
         stack.distribution = .fillEqually
         stack.spacing = 10
@@ -83,6 +116,14 @@ class LoginView: UIView {
     
     @objc func handleLogin() {
         loginAction?()
+    }
+    
+    @objc func handleRegistration() {
+        registrationAction?()
+    }
+    
+    @objc func handleAlertWithData() {
+        showAlertWithData?()
     }
     
     required init?(coder: NSCoder) {
