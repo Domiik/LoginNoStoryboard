@@ -7,16 +7,20 @@
 
 import UIKit
 
+protocol LoginViewModelProtocol {
+    func signUser(login: String, password: String, completion: @escaping((Bool) -> Void))
+}
+
 
 class LoginViewController: UIViewController {
-    
-
-    lazy var router = LoginRouter(viewController: self)
     
     private lazy var loginView = LoginView()
     private lazy var userViewModel = UserViewModel()
     private lazy var loginViewModel = LoginViewModel()
     private var data: Bool = false
+    
+    lazy var router = LoginRouter(viewController: self)
+    var model: LoginViewModelProtocol?
     
     override func loadView() {
         self.loginView.loginAction = loginPressed
@@ -42,20 +46,26 @@ class LoginViewController: UIViewController {
         guard let password = self.loginView.passwordTextField.text else {
             return
         }
-
-        if data {
-            self.loginViewModel.signUser(email: login, password: password, completion: { [weak self] in
-                self?.router.navigate(to: .menu)
-            }, failure: { [weak self] (error) in
-                self?.router.navigate(to: .resetPassword)
-            })
-        } else {
-            if userViewModel.currentUser(login: login, password: password) {
-                router.navigate(to: .menu)
+        self.model?.signUser(login: login, password: password, completion: { (succes) in
+            if succes {
+                self.router.navigate(to: .menu)
             } else {
-                router.navigate(to: .resetPassword)
+                self.router.navigate(to: .resetPassword)
             }
-        }
+        })
+//        if data {
+//            self.loginViewModel.signUser(email: login, password: password, completion: { [weak self] in
+//                self?.router.navigate(to: .menu)
+//            }, failure: { [weak self] (error) in
+//                self?.router.navigate(to: .resetPassword)
+//            })
+//        } else {
+//            if userViewModel.currentUser(login: login, password: password) {
+//                router.navigate(to: .menu)
+//            } else {
+//                router.navigate(to: .resetPassword)
+//            }
+//        }
 
     }
     
@@ -66,9 +76,13 @@ class LoginViewController: UIViewController {
     func showAlertWithData() {
         alert(completion: { (succes) in
             switch succes {
-            case .mock: self.data = false
+            case .mock:
+                self.model = UserViewModel()
+                self.data = false
                 break
-            case .firebase: self.data = true
+            case .firebase:
+                self.model = LoginViewModel()
+                self.data = true
                 break
             }
             

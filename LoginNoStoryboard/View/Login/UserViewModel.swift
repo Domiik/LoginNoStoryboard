@@ -19,16 +19,22 @@ struct UserDefaultSetting {
 class UserViewModel {
     
     private var user: User?
-    
-    func currentUser(login: String, password: String) -> Bool{
+
+ 
+}
+
+extension UserViewModel: LoginViewModelProtocol {
+    func signUser(login: String, password: String, completion: @escaping ((Bool) -> Void)) {
         let current = LoginViewAction.submit(login: login, password: password)
         switch current {
         case .submit(login: "Admin", password: "Admin"):
             UserDefaultSetting.user = user
-            return true
+            completion(true)
         default:
-            return false
+            completion(false)
         }
     }
+    
+    
     
 }

@@ -9,27 +9,32 @@ import Foundation
 import Firebase
 
 
-protocol LoginViewModelProtocol: class {
-    func signUser() -> Bool
-}
+
 
 class LoginViewModel {
     
     private var user: User?
-    private weak var delegate: LoginViewModelProtocol?
     
-    func signUser(email: String?, password: String?, completion: @escaping(() -> Void), failure: @escaping((_ error: String) -> Void)){
-        FirebaseAuth.Auth.auth().signIn(withEmail: email!, password: password!) { result, error in
-            if let error = error {
-                failure(error.localizedDescription)
-            } else {
-                completion()
-            }
-        }
-    }
+    
     
     func logautUser() {
        try! FirebaseAuth.Auth.auth().signOut()
     }
     
+}
+
+
+extension LoginViewModel: LoginViewModelProtocol {
+    func signUser(login: String, password: String, completion: @escaping ((Bool) -> Void)) {
+        FirebaseAuth.Auth.auth().signIn(withEmail: login, password: password) { result, error in
+            if let error = error {
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
+    }
+    
+
+   
 }
